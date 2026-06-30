@@ -5,24 +5,42 @@ cmake_minimum_required(VERSION 3.23)
 project(Tutorial)
 
 # TODO3: Add an executable target called Tutorial to the project
-add_executable(Tutorial)
+# add_executable(Tutorial)
 
 # TODO4: Add the Tutorial/Tutorial.cxx source file to the Tutorial target
-target_sources(Tutorial
-    PRIVATE
-        Tutorial/Tutorial.cxx
-)
+# target_sources(Tutorial
+#     PRIVATE
+#         Tutorial/Tutorial.cxx
+# )
 
 # TODO7: Add the MathFunctions library as a linked dependency
 #        to the Tutorial target
+# target_link_libraries(Tutorial
+#     PRIVATE
+#         MathFunctions
+# )
 
 # TODO11: Add the Tutorial subdirectory to the project
+add_subdirectory(Tutorial)
 
 # TODO5: Add a library target called MathFunctions to the project
+# add_library(MathFunctions)
 
 # TODO6: Add the source and header file located in Step1/MathFunctions to the
 #        MathFunctions target, note that the intended way to include the
 #        MathFunctions header is:
 #          #include <MathFunctions.h>
+# target_sources(MathFunctions
+#     PRIVATE
+#         MathFunctions/MathFunctions.cxx
+
+#     PUBLIC
+#         FILE_SET HEADERS   # TYPE is omitted due to FILE_SET is set to HEADERS, the same as TYPE would be
+#         BASE_DIRS          # In case BASE_DIRS points to the current source directory, the property can be excluded
+#             MathFunctions
+#         FILES
+#             MathFunctions/MathFunctions.h
+# )
 
 # TODO13: Add the MathFunctions subdirectory to the project
+add_subdirectory(MathFunctions)
