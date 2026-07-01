@@ -3,12 +3,17 @@ cmake_minimum_required(VERSION 3.23)
 
 # TODO1: Implement MacroAppend
 macro(MacroAppend ListVar Value)
-
+  if ("${${ListVar}}" STREQUAL "")
+    set(${ListVar} "${Value}")
+  else()
+    set(${ListVar} "${${ListVar}};${Value}")
+  endif()
 endmacro()
 
 # TODO2: Call MacroAppend, then return the value from FuncAppend
 function(FuncAppend ListVar Value)
-
+  MacroAppend(${ListVar} ${Value})
+  set(${ListVar} "${${ListVar}}" PARENT_SCOPE)
 endfunction()
 
 

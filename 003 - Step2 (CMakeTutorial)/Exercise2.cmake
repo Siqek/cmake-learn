@@ -4,6 +4,11 @@ cmake_minimum_required(VERSION 3.23)
 function(FilterFoo OutVar)
 # TODO3: Search all the variables in the argument list passed to FilterFoo,
 #        and place those containing "Foo" into the list named by "OutVar"
+  foreach(Elem IN LISTS ARGN)
+    if(${Elem} MATCHES "Foo")
+      list(APPEND OutVar ${Elem})
+    endif()
+  endforeach()
 
   set(${OutVar} ${${OutVar}} PARENT_SCOPE)
 endfunction()
